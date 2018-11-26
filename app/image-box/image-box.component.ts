@@ -1,21 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { BootstrapModalService } from '../bootstrap-modal/bootstrap-modal.service';
-// import { ImageModalComponent } from '../image-modal-view/image-modal-view.component';
-// import * as config from '../../systemjs.config';
 
 @Component({
   selector: 'image-box',
   templateUrl: 'Flickr-App/app/image-box/image-box.component.html'
 })
 export class ImageBoxComponent {
-
-  // array :any = [];
-  // sum = 100;
-  // throttle = 300;
-  // scrollDistance = 1;
-  // scrollUpDistance = 2;
-  // direction = '';
-  // title :any = 'This is Angular InfiniteScroll v' + config.map['ngx-infinite-scroll'].split('@')[1];
 
   @Input()
   private src: string;

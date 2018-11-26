@@ -9,9 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-// import { BootstrapModalService } from '../bootstrap-modal/bootstrap-modal.service';
-// import { ImageModalComponent } from '../image-modal-view/image-modal-view.component';
-// import * as config from '../../systemjs.config';
 var ImageBoxComponent = (function () {
     function ImageBoxComponent() {
         this.tag = [];
