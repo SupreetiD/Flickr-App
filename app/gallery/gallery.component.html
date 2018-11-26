@@ -1,0 +1,10 @@
+<div class="title"></div>
+<div class="container-fluid container-gallery">
+	<div class="row">
+		<div *ngFor="let col of picCols; let i = index;" id="container{{col}}" class="container col-md-4 col-sm-6 col-xs-12">
+			<div *ngFor="let img of images; let j = index;">
+				<image-box  *ngIf="(j % picCols.length) == i" [src]="img.url" [title]="img.title" [realname]="img.realname" [datetaken]="img.datetaken" [text]="img.text" [text]="img.page" [redirect]="img.redirect" [tags]="img.tags"></image-box>
+			</div>
+		</div>
+	</div>
+</div>

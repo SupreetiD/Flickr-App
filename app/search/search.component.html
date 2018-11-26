@@ -1,0 +1,11 @@
+<form class="search-form">
+	<label class="search-label">Search for Images</label>
+	<input [(ngModel)]="searchString" name="search-input" type="text" class="search-input" />
+	<button (click)="search()" (keydown)="search($event)" value="Flickr Search" readonly="readonly" class="search-submit">
+		<i class="fa fa-search"></i>
+	</button>
+	<div [hidden]="!searchInProgress"><i class="fa fa-refresh fa-spin"></i></div>
+</form>
+<span *ngIf="!searchInProgress && data">
+<gallery></gallery>
+</span>

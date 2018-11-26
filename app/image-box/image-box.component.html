@@ -1,0 +1,19 @@
+<div class="photo-container">
+	<a href = "{{redirect}}" target="_blank">
+	<img class="photo" src="{{src}}" />
+	<div class="photo-overlay">
+		<div class="table">
+			<div class="photo-label">
+				<p class="photo-title"><b>{{title}}</b><br/> by {{realname}}</p>
+				<p>Taken on {{datetaken | date}}</p>
+				<div style="display: inline;">
+					<i class="fa fa-tags"></i>
+					<p *ngFor="let t of tag" style="display: inline;">
+						<a href="{{tagBaseUrl}}{{t}}" target="_blank">{{t}}</a>
+				 </p>
+			 </div>
+			</div>
+		</div>
+	</div>
+</a>
+</div>
