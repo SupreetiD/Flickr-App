@@ -16,9 +16,20 @@ var SearchComponent = (function () {
     function SearchComponent(searchService, uiService) {
         this.searchString = '';
         this.searchInProgress = false;
+        this.pos = 0;
         this.searchService = searchService;
         this.uiService = uiService;
     }
+    SearchComponent.prototype.onWindowScroll = function () {
+        var body = document.getElementsByTagName('body')[0];
+        this.pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
+        var max = document.documentElement.scrollHeight;
+        var y = body.scrollTop || document.documentElement.scrollTop;
+        console.log("Values ", this.pos, max);
+        if (this.pos > document.body.scrollHeight) {
+            this.search();
+        }
+    };
     SearchComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.uiService.resetHeaderFooter();
@@ -51,6 +62,12 @@ var SearchComponent = (function () {
             _this.searchInProgress = false;
         });
     };
+    __decorate([
+        core_1.HostListener("window:scroll", ["$event"]), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], SearchComponent.prototype, "onWindowScroll", null);
     SearchComponent = __decorate([
         core_1.Component({
             selector: 'search',

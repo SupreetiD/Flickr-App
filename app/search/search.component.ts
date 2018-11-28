@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 import { SearchService } from '../services/search.service';
@@ -24,6 +24,21 @@ export class SearchComponent implements OnInit, OnDestroy {
   searchInProgress: boolean = false;
   private resizedObservable: Observable<boolean>;
   data: any;
+  pos: any =0;
+
+    @HostListener("window:scroll", ["$event"])
+      onWindowScroll() {
+        let body:any = document.getElementsByTagName('body')[0];
+      this.pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
+      let max = document.documentElement.scrollHeight;
+      var y = body.scrollTop || document.documentElement.scrollTop;
+      console.log("Values ", this.pos, max);
+       if(this.pos > document.body.scrollHeight )   {
+       this.search();
+       // pos= pos+3000;
+       // console.log('pos ',pos);
+      }
+    }
 
   public ngOnInit() {
     this.uiService.resetHeaderFooter();
