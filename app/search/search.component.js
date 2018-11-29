@@ -17,6 +17,7 @@ var SearchComponent = (function () {
         this.searchString = '';
         this.searchInProgress = false;
         this.pos = 0;
+        this.page = 1;
         this.searchService = searchService;
         this.uiService = uiService;
     }
@@ -28,6 +29,8 @@ var SearchComponent = (function () {
         console.log("Values ", this.pos, max);
         if (this.pos > document.body.scrollHeight) {
             this.search();
+            // pos= pos+3000;
+            console.log('pos ', this.pos);
         }
     };
     SearchComponent.prototype.ngOnInit = function () {
@@ -50,7 +53,8 @@ var SearchComponent = (function () {
             return;
         }
         this.searchInProgress = true;
-        var searchObservable = this.searchService.search(this.searchString);
+        var searchObservable = this.searchService.search(this.searchString, this.page);
+        (this.page)++;
         searchObservable.subscribe(function (data) {
             _this.data = data;
             if (data.length == 0) {

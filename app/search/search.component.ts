@@ -25,6 +25,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   private resizedObservable: Observable<boolean>;
   data: any;
   pos: any =0;
+  page:any= 1;
+
 
     @HostListener("window:scroll", ["$event"])
       onWindowScroll() {
@@ -36,7 +38,7 @@ export class SearchComponent implements OnInit, OnDestroy {
        if(this.pos > document.body.scrollHeight )   {
        this.search();
        // pos= pos+3000;
-       // console.log('pos ',pos);
+       console.log('pos ', this.pos);
       }
     }
 
@@ -64,7 +66,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     this.searchInProgress = true;
-    let searchObservable: Observable<any> = this.searchService.search(this.searchString);
+    let searchObservable: Observable<any> = this.searchService.search(this.searchString , this.page);
+    (this.page)++;
     searchObservable.subscribe(
       data => {
         this.data = data
