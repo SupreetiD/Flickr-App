@@ -58,6 +58,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.uiService.resetHeaderFooter();
   }
 
+
+  resetPageNb() {
+    this.page = 1;
+}
+
   search() {
 
     if (this.searchString.length == 0) {

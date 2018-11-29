@@ -46,6 +46,9 @@ var SearchComponent = (function () {
     SearchComponent.prototype.ngOnDestroy = function () {
         this.uiService.resetHeaderFooter();
     };
+    SearchComponent.prototype.resetPageNb = function () {
+        this.page = 1;
+    };
     SearchComponent.prototype.search = function () {
         var _this = this;
         if (this.searchString.length == 0) {
