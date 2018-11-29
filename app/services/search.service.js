@@ -18,7 +18,7 @@ var SearchService = (function () {
         this.url = 'https://api.flickr.com/services/rest';
         this.cachedResults = [];
     }
-    SearchService.prototype.search = function (searchText) {
+    SearchService.prototype.search = function (searchText, page) {
         var _this = this;
         console.log(searchText);
         var params = new http_1.URLSearchParams();
@@ -28,7 +28,7 @@ var SearchService = (function () {
         params.set('action', 'opensearch');
         params.set('tags', searchText);
         params.set('per_page', '20');
-        params.set('page', '1');
+        params.set('page', page);
         params.set('media', 'photos');
         params.set('content_type', '7');
         params.set('format', 'json');
@@ -49,7 +49,7 @@ var SearchService = (function () {
                 var title = jsonRes[i].title;
                 var realname = jsonRes[i].realname;
                 var datetaken = jsonRes[i].datetaken;
-                var page = jsonRes[i].page;
+                var page_1 = jsonRes[i].page;
                 var tags = jsonRes[i].tags;
                 var redirect = 'https://www.flickr.com/photos/' + owner + '/' + id;
                 var photoUrl = 'https://farm' + farm + '.staticflickr.com/' + server + '/' + id + '_' + secret + '.jpg';

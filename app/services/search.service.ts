@@ -22,7 +22,7 @@ export class SearchService {
 
   private cachedResults: any[] = [];
 
-  search(searchText: string): Observable<any> {
+  search(searchText: string, page: string): Observable<any> {
     console.log(searchText);
 
     let params = new URLSearchParams();
@@ -32,7 +32,7 @@ export class SearchService {
     params.set('action', 'opensearch');
     params.set('tags', searchText);
     params.set('per_page', '20');
-    params.set('page', '1');
+    params.set('page', page);
     params.set('media', 'photos');
     params.set('content_type', '7');
     params.set('format', 'json');
